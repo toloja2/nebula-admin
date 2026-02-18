@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.boutton {
+    display: none;
+}
+
+
+
+@media (max-width :769px) {
+    .sideBar {
+        position: fixed;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-items: center;
+        align-content: center;
+        box-shadow: 10px 0 10px rgb(167, 160, 160);
+        backdrop-filter: blur(30px);
+
+
+    }
+
+    .sideBar ul {
+    
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        gap: 10px;
+    }
+
+
+
+
+
+}
+
+@media (max-width :575px) {
+    .sideBar {
+        position: absolute;
+        height: 100vh;
+        flex-direction: column;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+        width: 50%;
+        border-radius: 2px;
+        top: -1000vh;
+
+    }
+
+    .sideBar ul {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: start;
+    }
+
+    .boutton {
+        display: block;
+        z-index: 101;
+    }
+
+}
+
+.sideBarToggle{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
