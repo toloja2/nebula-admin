@@ -2,7 +2,7 @@
 
 type StatCardProps = {
     titre : string,
-    valeur : string,
+    valeur : number,
     icon: string
 }
 

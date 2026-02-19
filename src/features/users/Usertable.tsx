@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { type User } from "./type";
+import {type User } from "./Type";
 
 type Props = {
     users: User[]
