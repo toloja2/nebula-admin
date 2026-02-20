@@ -8,21 +8,13 @@ import AddUserModal from "../features/users/AddUserModal";
 import { type User } from "../features/users/Type";
 
 
+
 const Dashboard = () => {
 
     const [isDarkmode, setIsDarkmode] = useState(false);
     const [isSideBar, setSideBar] = useState(false);
     const [addUser, setAddUser] = useState(false);
     const [users, setUsers] = useState<User[]>(UserData)
-    // const [users, setUsers] = useState<User>(()=>{
-    //     const saved = localStorage.getItem("users");
-    //     return saved ? JSON.parse(users) : UserData;
-    // });
-
-    // useEffect(()=>{
-    //     localStorage.setItem("users", JSON.stringify(users))
-    // },[users]);
-
     const totalusers = users.length;
     const active = users.filter((u)=>u.statut.toLowerCase() === "active").length;
     const inactive = users.filter((u)=>u.statut.toLowerCase() === "inactive").length;
@@ -40,7 +32,7 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen md:gap-8 md:flex md:flex-cols-4 ml-2">
-            <button className="boutton hover:ring-2 hover:bg-black/50 hover:text-white hover:font-bold hover:scale-105 hover:ring-blue-700 ring-1 fixed top-2 z-10 backdrop-blur-xl font-bold rounded-full ring-black p-2"
+            <button className="boutton  transition duration-5000 ease-in-out hover:ring-2 hover:bg-black/50 hover:text-white hover:font-bold hover:scale-105 hover:ring-blue-700 ring-1 fixed top-2 z-10 backdrop-blur-xl font-bold rounded-full ring-black p-2"
                 onClick={() => {
                     setSideBar(!isSideBar);
                     

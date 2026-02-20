@@ -43,9 +43,11 @@ const Usertable = ({ users }: Props) => {
                         <option value="inactive">Inactive</option>
                     </select>
                 </div>
-                <div className="text-center text-sm text-gray-600 font-semibold bg-gray-200 p-2  rounded w-full ">{filtreUser.length} utilisateur{filtreUser.length !== 1 && "s"} trouvé{filtreUser.length !== 1 && "s"} sur la page {currentPage}/{totalPage} </div>
+                <div className="text-center text-sm text-gray-600 font-semibold bg-gray-200 p-2  rounded w-full ">{filtreUser.length} utilisateur{filtreUser.length !== 1 && "s"} trouvé{filtreUser.length !== 1 && "s"} sur la page {filtreUser.length ===0 ? "0" :`${currentPage}` }/{totalPage} </div>
             </div>
 
+            <div className="text-center">Aucun utilisateur enregistré</div>
+            {filtreUser.length !=0 &&
             <table className="full text-center bg-gray-200 rounded">
                 <thead className="ng-gray text-sm text-gray-600">
                     <tr>
@@ -72,7 +74,7 @@ const Usertable = ({ users }: Props) => {
                 </tbody>
             </table>
             
-
+}
             <div className="flex justify-between items-center mt-4">
                 <button
                     onClick={() => setCurrentPage((prev) => prev - 1)}
@@ -83,7 +85,7 @@ const Usertable = ({ users }: Props) => {
                 </button>
 
                 <span className="text-gray-700 px-3">
-                    Page {currentPage} / {totalPage}
+                    Page {filtreUser.length === 0 ? "0": `${currentPage}`} / {totalPage}
                 </span>
 
                 <button
