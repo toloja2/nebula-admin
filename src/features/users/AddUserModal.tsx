@@ -1,17 +1,14 @@
-import { useState } from "react"
-import { type UserStatut } from "./Type"
+import {useState } from "react"
+import { type User, type UserStatut } from "./Type"
 
 interface Props {
     onClose: () => void
-    onAdd: (user: {
-        nom: string
-        email: string
-        role: string
-        statut: UserStatut
-    }) => void
+    onAdd: (user: Omit<User, "id">) => void,
+    onEdit: (user: User) => void,
+    editUsers: User | null
 }
 
-function AddUserModal({ onClose, onAdd }: Props) {
+function AddUserModal({ onClose, onAdd, onEdit, editUsers }: Props) {
 
     const [nom, setNom] = useState("")
     const [email, setEmail] = useState("")
@@ -27,12 +24,26 @@ function AddUserModal({ onClose, onAdd }: Props) {
             return
         }
 
-        onAdd({
+        if (editUsers && onEdit) {
+
+            onEdit({
+            id : editUsers.id,
             nom,
             email,
             role,
             statut
         })
+        }
+
+        else if(onAdd) {
+            onAdd({
+                nom,
+                email,
+                role,
+                statut
+            })
+
+        }
 
         onClose()
         setErreur("")
@@ -54,7 +65,7 @@ function AddUserModal({ onClose, onAdd }: Props) {
                         placeholder="Nom"
                         value={nom}
                         onChange={(e) => setNom(e.target.value)}
-                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white"
+                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white outline-0"
                     />
 
                     <input
@@ -62,7 +73,7 @@ function AddUserModal({ onClose, onAdd }: Props) {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white"
+                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white outline-0"
                     />
 
                     <input
@@ -70,7 +81,7 @@ function AddUserModal({ onClose, onAdd }: Props) {
                         placeholder="Role"
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
-                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white"
+                        className="w-full border p-2 rounded dark:bg-gray-700 dark:text-white outline-0"
                     />
 
                     <select
